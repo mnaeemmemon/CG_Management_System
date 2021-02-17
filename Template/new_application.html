@@ -11,13 +11,62 @@
 
     <!-- Title Page-->
     <title>New Application</title>
-
+    <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, ul, li, a, i;
+          var d1 = document.getElementById("myMenu");
+          var d2 = d1.getElementsByTagName("li");
+          var d3 = d2.getElementsByTagName("a");
+          d2.style.display="";
+          input = document.getElementById("mySearch");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myMenu");
+          li = ul.getElementsByTagName("li");
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        </script>
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <style>
+        #mySearch {
+            width: 100%;
+            font-size: 18px;
+            padding: 11px;
+            border: 1px solid #ddd;
+            }
 
+            /* Style the navigation menu */
+            #myMenu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            }
+
+            /* Style the navigation links */
+            #myMenu li a {
+            padding: 12px;
+            text-decoration: none;
+            color: black;
+            display: none;
+            }
+
+            #myMenu li a:hover {
+            background-color: #eee;
+            }
+        </style>
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
@@ -40,28 +89,75 @@
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
-                    <div class="login-content">
+                    <div class="login-content" style="padding-left: 5px;">
                         <div class="login-logo">
                             <a href="#">
                                 <img src="images/icon/logo.png" alt="CoolAdmin">
                             </a>
                         </div>
-                        <div class="login-form">
+                        <div class="login-form" style="width: 100%; height: 500px;">
                             <form action="" method="post">
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                <div style="background-color: beige; padding: 16px; margin-left: 10px; width: 30%; height: max-content; float: left;">
+                                    
+                                    <label style="margin-left: -10px;">Direction:</label><br>
+                                    <input type="radio" id="export" name="direction" value="export">
+                                    <label class="fa fa-caret-square-o-right" for="export"> Export</label><br>
+
+                                    <input type="radio" id="import" name="direction" value="import">
+                                    <label class="fa fa-caret-square-o-left" for="import"> Import</label><br>
+
+                                    <input type="radio" id="domestic" name="direction" value="domestic">
+                                    <label class="fa fa-home" for="domestic"> Domestic</label><br>
+
+                                    <input type="radio" id="drop" name="direction" value="drop">
+                                    <label class="fa fa-cube" for="drop"> Drop</label><br>
+
+                                    <hr style="height: 2px; background-color: black; width: 100%;">
+
+                                    <label style="margin-left: -10px;">Transport:</label><br>
+                                    <input type="radio" id="air" name="transport" value="air">
+                                    <label class="fa fa-fighter-jet" for="air"> Air</label><br>
+
+                                    <input type="radio" id="ocean" name="transport" value="ocean">
+                                    <label class="fa fa-ship" for="ocean"> Ocean</label><br>
+
+                                    <input type="radio" id="inland" name="transport" value="inland">
+                                    <label class="fa fa-truck" for="inland"> InLand</label><br>
+
+                                    <hr style="height: 2px; background-color: black;">
+
+                                    <label style="margin-left: -10px;">Shipment Type:</label><br>
+                                    <input type="radio" id="fcl" name="ship_type" value="fcl">
+                                    <label class="fa fa-map" for="fcl"> FCL</label><br>
+
+                                    <input type="radio" id="lcl" name="ship_type" value="lcl">
+                                    <label class="fa fa-map" for="lcl"> LCL</label><br>
+
                                 </div>
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                <div style="width: 65%; height: 300px; float: right;">
+                                    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+                                    <ul id="myMenu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">PHP</a></li>
+                                        <li><a href="#">Python</a></li>
+                                        <li><a href="#">jQuery</a></li>
+                                        <li><a href="#">SQL</a></li>
+                                        <li><a href="#">Bootstrap</a></li>
+                                        <li><a href="#">Node.js</a></li>
+                                      </ul>
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    </div>
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                                    
                                 </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
-                                
                             </form>
                         </div>
                     </div>
